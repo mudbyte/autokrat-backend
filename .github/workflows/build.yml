@@ -1,0 +1,31 @@
+name: Build workflow
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: adopt
+          java-version: 17
+      - name: Gradle test
+        run: ./gradlew test
+
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: adopt
+          java-version: 17
+      - name: Gradle build
+        run: ./gradlew build
