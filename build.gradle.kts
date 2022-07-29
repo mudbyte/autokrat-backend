@@ -34,6 +34,9 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> { useJUnitPlatform() }
 
 spotless {
-  kotlin { ktfmt() }
+  kotlin {
+    ktfmt()
+    licenseHeaderFile("${project.rootProject.projectDir}/LICENSE-HEADER")
+  }
   kotlinGradle { ktfmt() }
 }
